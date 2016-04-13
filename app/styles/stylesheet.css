@@ -1,3 +1,5 @@
+/* mario */
+
 .jumbotron {
   display: flex;
   align-items: center;
@@ -5,14 +7,31 @@
   background-size: cover;
   color: #ffffff;
   height: 1000px;
-  text-shadow: 0.25px 0.25px 0.25px #000000;
 }
 
-img {
+#mario {
   position: relative;
 
   left: 0px;
-  bottom: -345px;
+  bottom: -347px;
 
   width: 35px;
+}
+
+.goomba {
+  height: 25px;
+
+  position: relative;
+
+  left: 590px;
+  top: 175px;
+}
+
+.mirror {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1, -1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
