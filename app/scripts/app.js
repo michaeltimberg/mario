@@ -1,174 +1,108 @@
 /* mario */
 
 var main = function () {
-  function moveGoomba () {
-    $('.goomba').removeClass('mirror');
+    function moveGoomba () {
+        $('.goomba').removeClass('mirror');
 
-    $('.goomba').animate({
-      left: "+=190px"
-    }, 5000, function() {
-      $('.goomba').addClass('mirror');
+        $('.goomba').animate({
+            left: "+=130px"
+        }, 5000, function () {
+            $('.goomba').addClass('mirror');
+        });
+
+        $('.goomba').animate({
+            left: "-=130px"
+        }, 5000, moveGoomba);
+    }
+
+    moveGoomba ();
+
+    var counterH = 0;
+    var counterV = 0;
+
+    var leftArray = [0, 29, 40, 46];
+    var rightArray = [25, 37, 46];
+    var topArray = [12, 13, 17, 18, 19, 20, 21, 22];
+
+    var jumpArray = [11, 14, 16, 23]
+
+    $(document).keydown(function(e) {
+        var keyCode = e.keyCode || e.which;
+
+        if (keyCode == 38) {
+            if (jumpArray.indexOf(counterH) == 0 || jumpArray.indexOf(counterH) == 2) {
+                $('#mario').removeClass('mirror');
+
+                $('#mario').animate({
+                    top: "-=119px"
+                }, 90);
+
+                $('#mario').animate({
+                    left: "+=25px"
+                }, 25);
+
+                counterV++
+                counterH++
+            } else if (jumpArray.indexOf(counterH) == 1 || jumpArray.indexOf(counterH) == 3) {
+                $('#mario').addClass('mirror');
+
+                $('#mario').animate({
+                    top: "-=119px"
+                }, 90);
+
+                $('#mario').animate({
+                    left: "-=25px"
+                }, 25);
+
+                counterV++
+                counterH--
+            } else if (topArray.indexOf(counterH) == -1) {
+                $('#mario').animate({
+                    top: "-=130px"
+                }, 100);
+
+                $('#mario').animate({
+                    top: "+=130px"
+                }, 80);
+            } else {
+                $('#mario').animate({
+                    top: "-=65px"
+                }, 50);
+
+                $('#mario').animate({
+                    top: "+=65px"
+                }, 30);
+            }
+        } else if (keyCode == 37) {
+            $('#mario').addClass('mirror');
+
+            if (leftArray.indexOf(counterH) == -1) {
+                $('#mario').animate({
+                    left: "-=25px"
+                }, 50);
+
+                counterH--
+            }
+        } else if (keyCode == 39) {
+            $('#mario').removeClass('mirror');
+
+            if (rightArray.indexOf(counterH) == -1) {
+                $('#mario').animate({
+                    left: "+=25px"
+                }, 50);
+
+                counterH++
+            }
+        }
+
+        if (counterV == 1 && topArray.indexOf(counterH) == -1) {
+            $('#mario').animate({
+                top: "+=119px"
+            }, 150);
+
+            counterV--
+        }
     });
-
-    $('.goomba').animate({
-      left: "-=190px"
-    }, 5000, moveGoomba);
-  };
-
-  moveGoomba ();
-
-  var counterH = 0;
-  var counterV = 0;
-
-  $(document).keydown(function(e){
-    var keyCode = e.keyCode || e.which;
-
-    if (keyCode == 38) {
-      if (((counterH >= 21) && (counterH <= 24)) || ((counterH >= 30) && (counterH <= 42))) {
-        $('#mario').animate({
-           bottom: "+=95px"
-         }, 100);
-
-        $('#mario').animate({
-           bottom: "-=95px"
-         }, 200);
-      } else if (counterH === 20 || counterH === 25 || counterH === 29 || counterH === 43 || counterH === 47 || counterH === 53) {
-        if ($('#mario').hasClass('mirror')) {
-          if (counterH === 53) {
-            $('#mario').animate({
-               bottom: "+=195px"
-             }, 100);
-
-            $('#mario').animate({
-               left: "-=20px"
-             }, 50);
-
-            $('#mario').animate({
-               bottom: "-=107px"
-             }, 200);
-          } else {
-            $('#mario').animate({
-               bottom: "+=195px"
-             }, 100);
-
-            $('#mario').animate({
-               left: "-=20px"
-             }, 50);
-
-            $('#mario').animate({
-               bottom: "-=18px"
-             }, 200);
-          };
-
-          counterH --;
-        } else {
-          if (counterH === 47) {
-            $('#mario').removeClass('mirror');
-
-            $('#mario').animate({
-               bottom: "+=195px"
-             }, 100);
-
-            $('#mario').animate({
-               left: "+=20px"
-             }, 50);
-
-            $('#mario').animate({
-               bottom: "-=107px"
-             }, 200);
-          } else {
-            $('#mario').removeClass('mirror');
-
-            $('#mario').animate({
-               bottom: "+=195px"
-             }, 100);
-
-            $('#mario').animate({
-               left: "+=20px"
-             }, 50);
-
-            $('#mario').animate({
-               bottom: "-=18px"
-             }, 200);
-          };
-
-          counterH ++;
-        };
-
-          counterV ++;
-      } else {
-        if ($('#mario').hasClass('mirror')) {
-          $('#mario').animate({
-             bottom: "+=195px"
-           }, 100);
-
-          $('#mario').animate({
-             left: "-=20px"
-           }, 50);
-
-          $('#mario').animate({
-             bottom: "-=195px"
-           }, 200);
-
-          counterH --;
-        } else {
-          $('#mario').removeClass('mirror');
-
-          $('#mario').animate({
-             bottom: "+=195px"
-           }, 100);
-
-          $('#mario').animate({
-             left: "+=20px"
-           }, 50);
-
-          $('#mario').animate({
-             bottom: "-=195px"
-           }, 100);
-
-          counterH ++;
-        };
-      };
-    } else if (keyCode == 37) {
-      $('#mario').addClass('mirror');
-
-      if (counterH > 0 && ((counterH <= 47 && counterV === 0) || (counterH >= 54 && counterV === 0) || counterV === 1)) {
-        $('#mario').animate({
-           left: "-=20px"
-         }, 50);
-
-        counterH --;
-      };
-    } else if (keyCode == 39) {
-      $('#mario').removeClass('mirror');
-
-      if (counterH < 68 && ((counterH <= 46 && counterV === 0) || (counterH >= 53 && counterV === 0) || counterV === 1) ) {
-        $('#mario').animate({
-           left: "+=20px"
-         }, 50);
-
-        counterH ++;
-      };
-    };
-
-    if (((counterH >= 0) && (counterH <= 20)) || ((counterH >= 25) && (counterH <= 29)) || ((counterH >= 43) && (counterH <= 46)) || ((counterH >= 54) && (counterH <= 68))) {
-      if (counterV === 1) {
-        $('#mario').animate({
-           bottom: "-=177px"
-         }, 200);
-
-        counterV--;
-      };
-    } else if (counterH === 47 || counterH === 53) {
-      if (counterV === 1) {
-        $('#mario').animate({
-           bottom: "-=88px"
-         }, 200);
-
-        counterV--;
-      };
-    };
-  });
 };
 
 $(document).ready(main);

@@ -1,37 +1,55 @@
 /* mario */
 
-.jumbotron {
-  display: flex;
-  align-items: center;
-  background-image: url('https://images5.alphacoders.com/445/445906.jpg');
-  background-size: cover;
-  color: #ffffff;
-  height: 1000px;
+body {
+    width: 100%;
+    background: url(/images/blur.jpg) top center no-repeat;
+}
+
+.container {
+    display: inline;
+}
+
+.span10 img {
+    background-color: black;
+
+    padding: 0px 1px 1px 1px;
+    padding-top: none;
+
+    border: 1px solid darkslategray;
+    border-top: none;
+}
+
+.characters {
+    position: relative;
+    height: 210px;
+    width: 1200px;
+    bottom: 300px;
+    z-index: 1;
+}
+
+.characters img {
+    position: absolute;
 }
 
 #mario {
-  position: relative;
+    height: 25px;
 
-  left: 0px;
-  bottom: -347px;
-
-  width: 35px;
+    left: 0;
+    top: 183px;
 }
 
 .goomba {
-  height: 25px;
+    height: 20px;
 
-  position: relative;
-
-  left: 590px;
-  top: 175px;
+    left: 420px;
+    top: 67px;
 }
 
 .mirror {
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1, -1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1, -1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }

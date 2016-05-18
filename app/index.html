@@ -3,22 +3,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Super Mario!</title>
+      <title>Super Mario!</title>
 
-    <link rel='stylesheet' type='text/css' href='/styles/stylesheet.css'/>
+      <link rel="shortcut icon" href="/favicon.ico"/>
 
-    <link href="/scss/bootstrap.css" rel="stylesheet">
-	</head>
+      <link rel='stylesheet' type='text/css' href='/styles/stylesheet.css'/>
 
-	<body>
-    <div class="jumbotron">
-      <img id="mario" src="/images/mario.gif"/>
+      <link href="/styles/bootstrap.css" rel="stylesheet">
+  </head>
 
-      <img class="goomba" src="/images/goomba.gif"/>
-    </div>
+  <body>
+       <div class="container col-xs-12">
+            <div class="row">
+                <div class="span1 title"></div>
+                <div class="span10"><img class="center-block" src="/images/background.jpg"/></div>
+                <div class="span1 characters center-block">
+                    <img id="mario" src="/images/mario.gif"/>
+
+                    <img class="goomba" src="/images/goomba.gif"/>
+                </div>
+            </div>
+        </div>
 
     <script src="/scripts/jquery-2.2.3.js"></script>
 
     <script src="/scripts/app.js"></script>
-	</body>
+    </body>
 </html>
